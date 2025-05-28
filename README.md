@@ -1,9 +1,10 @@
 ## 📺 Video Demonstration
 
 Watch the full demo video on YouTube here:  
-🎥 **[https://youtu.be/your-demo-video-link](https://youtu.be/your-demo-video-link)**
+🎥 **[https://youtu.be/G6Y-0hBpHT0](https://youtu.be/G6Y-0hBpHT0)**
 
-[![Watch the demo video](https://img.youtube.com/vi/your-demo-video-link/0.jpg)](https://youtu.be/your-demo-video-link)
+[![Watch the demo video](https://img.youtube.com/vi/G6Y-0hBpHT0/0.jpg)](https://youtu.be/G6Y-0hBpHT0)
+
 
 
 # 🛠️ Setup Instructions – My Streamlit Weather Dashboard
