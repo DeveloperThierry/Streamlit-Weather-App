@@ -119,7 +119,7 @@ Your default browser will open at [http://localhost:8501](http://localhost:8501)
 
 ## 🔗 Repository
 
-[GitHub Repo: yourusername/streamlit-weather-app](https://github.com/yourusername/streamlit-weather-app)
+[GitHub Repo: developerthierry/streamlit-weather-app](https://github.com/DeveloperThierry/Streamlit-Weather-App?tab=readme-ov-file)
 
 ---
 
