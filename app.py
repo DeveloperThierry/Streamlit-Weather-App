@@ -2,11 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests 
-
 import os
-from dotenv import load_dotenv
-
-# load_dotenv()
 
 API_KEY = st.secrets["API_KEY"]
 
