@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests 
+import requests
 import os
+from datetime import datetime, timedelta
+
 
 API_KEY = st.secrets["API_KEY"]
 
@@ -42,7 +44,7 @@ st.set_page_config(page_title=" My Weather App", page_icon="🌤️", layout="wi
 st.title("🌦️ My Real-Time Weather Dashboard")
 st.subheader("Check the forecast in your city")
 st.caption("Powered by OpenWeatherMap API")
-user_color = st.color_picker("Change text color", "#FF0000")
+user_color = st.color_picker("Change text color", "#ff3300")
 set_custom_widget_color(user_color)
 st.markdown("---")
 
@@ -53,6 +55,7 @@ unit = st.radio("Select units", options=["Celsius", "Fahrenheit"])
 unit_format = "metric" if "Celsius" in unit else "imperial"
 days = st.slider("Select number of forecast days", min_value=1, max_value=5, value=3)
 show_more = st.checkbox("Select to show chart for (humidity, wind, etc.) ")
+temp_unit = "°C" if unit == "Celsius" else "°F"
 
 
 if st.button("Get Weather"):
@@ -60,13 +63,14 @@ if st.button("Get Weather"):
     st.warning("⚠️ City name is missing. Please enter city name. (ex. Miami)")
   else:
     st.info(" ⏳ loading weather data...")
-    
+
     data = get_current_weather(city, unit_format)
     if data:
       weather_info = extract_weather_data(data)
       basic_info = {
+        "Date": datetime.today().date(),
         "City":weather_info["City"],
-        "Temperature":weather_info["Temperature"],
+        f"Temperature ({temp_unit})":weather_info["Temperature"],
         "Condition":weather_info["Condition"]
       }
       basic_df = pd.DataFrame([basic_info])
@@ -77,7 +81,10 @@ if st.button("Get Weather"):
       if show_more:
         st.subheader("🌡️ Advanced Weather Information")
         st.info("More Detailed Weather Forecasts")
-        df = pd.DataFrame([weather_info])
+        df = pd.DataFrame([{
+            "Date": datetime.today().date(),
+            **weather_info
+        }])
         st.dataframe(df)
 
 
@@ -92,17 +99,20 @@ if st.button("Get Weather"):
 
         }).set_index("Metric")
         st.bar_chart(added_data)
-      
+
       st.subheader("📊 Forecasts & Visualizations")
-      st.info("Temperature Line Graph") 
+      st.info("Temperature Line Graph")
       temps = [weather_info["Temperature"] + i for i in range(days)]
-      days_range = [f"Day {i+1}" for i in range(days)]
+      days_range = [(datetime.today() + timedelta(days=i)).date() for i in range(days)]
       forecast_df = pd.DataFrame({
         "Day":days_range,
-        "Temperature":temps
+        f"Temperature ({temp_unit})":temps
       }).set_index("Day")
       st.line_chart(forecast_df)
-      
+
+      st.subheader("📋 Forecast Temperature Table")
+      st.dataframe(forecast_df)
+
       st.subheader("🗺️ Location Map")
       location_df = pd.DataFrame({
         'lat':[weather_info["Lat"]],
