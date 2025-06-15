@@ -42,7 +42,7 @@ st.set_page_config(page_title=" My Weather App", page_icon="🌤️", layout="wi
 st.title("🌦️ My Real-Time Weather Dashboard")
 st.subheader("Check the forecast in your city")
 st.caption("Powered by OpenWeatherMap API")
-user_color = st.color_picker("Change text color", "#FFFFFF")
+user_color = st.color_picker("Change text color", "#FF0000")
 set_custom_widget_color(user_color)
 st.markdown("---")
 
