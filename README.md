@@ -5,6 +5,10 @@ Watch the full demo video on YouTube here:
 
 [![Watch the demo video](https://img.youtube.com/vi/G6Y-0hBpHT0/0.jpg)](https://youtu.be/G6Y-0hBpHT0)
 
+# 🌤️ SkyStatus
+
+Check out the live SkyStatus app here: [SkyStatus on Streamlit](https://skystatus.streamlit.app/)
+
 # 🛠️ Setup Instructions – My Streamlit Weather Dashboard
 
 This guide will help you install and run the **Streamlit-based real-time weather dashboard**. It provides interactive forecasts, maps, visualizations, and UI customization.
